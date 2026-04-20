@@ -1,5 +1,6 @@
 'use client'
 
+import BlogCard from '@/app/components/BlogCard/BlogCard'
 import Navbar from '@/app/components/Navbar/Navbar'
 import axios from 'axios'
 import Link from 'next/link'
@@ -64,48 +65,7 @@ export default function BlogPage() {
                 <main className="px-4 sm:px-10 py-8 sm:py-12 max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         {posts.map((post) => (
-                            <div
-                                key={post.id}
-                                className="group bg-white rounded-2xl border border-slate-100 overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
-                            >
-                                <div className="h-1 w-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                                <div className="p-5 sm:p-6 flex flex-col flex-1 gap-3">
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-[10px] tracking-widest uppercase text-black font-semibold bg-indigo-50 px-2.5 py-1 rounded-lg">
-                                            #{String(post.id).padStart(2, '0')}
-                                        </span>
-                                        <span className="text-[10px] text-slate-300 tracking-wider uppercase">
-                                            User {post.userId}
-                                        </span>
-                                    </div>
-
-                                    <h2 className="text-[15px] sm:text-base font-semibold text-slate-800 leading-snug line-clamp-2 group-hover:text-indigo-600 transition-colors duration-200 capitalize">
-                                        {post.title}
-                                    </h2>
-
-                                    <p className="text-sm text-slate-400 leading-relaxed line-clamp-3 flex-1">
-                                        {post.body}
-                                    </p>
-
-                                    <div className="h-px bg-slate-100" />
-
-                                    <Link
-                                        href={`/blog/${post.id}`}
-                                        className="flex items-center justify-between text-sm font-medium text-black hover:text-indigo-700 transition-colors duration-200 group/link"
-                                    >
-                                        <span>Read more</span>
-                                        <svg
-                                            className="w-4 h-4 transition-transform duration-200 group-hover/link:translate-x-1"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                            </div>
+                            <BlogCard key={post.id} post={post} />
                         ))}
                     </div>
                 </main>
